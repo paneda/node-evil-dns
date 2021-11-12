@@ -27,7 +27,7 @@ dns.lookup = function(domain, options, callback) {
 		var entry = domains[i];
 		if (domain.match(entry.domain)) {
 			if (!family || family === entry.family) {
-				return callback(null, entry.ip, entry.family);
+				return process.nextTick(() => callback(null, entry.ip, entry.family));
 			}			
 		}
 	}
